@@ -42,7 +42,7 @@ function currentTime() {
 
     meridiemEl.innerText = `${hour >= 12 ? "PM" : "AM"}`;
     heroGreetingEl.innerText = `${
-        hour > 19 ? "Good Night 🌜" : "Good Day 🌞"
+        hour > 18 ? "Good Night 🌜" : "Good Day 🌞"
     }, ${username}`;
 
     if (swapTimer) {
@@ -51,7 +51,7 @@ function currentTime() {
         }
     }
 
-    clockEl.innerText = `${hour}:${min}`;
+    clockEl.innerText = `${hour}:${min}:${sec}`;
 
     var timer = setTimeout(() => {
         currentTime();
@@ -68,3 +68,27 @@ function updateTime(k) {
 
 currentTime();
 // DARK MODE START
+// QUOTES START
+
+const quotesEl = document.querySelector(".hero-quotes");
+
+const quotesArray = [
+    "Time is Gold!",
+    "Bawal umihi dito",
+    "Honesty is the best policy",
+    "Cleanliness is next to Godliness",
+    "No Littering",
+    "Keep Off the Grass",
+    "No Man is an Island",
+    "No jaywalking",
+    "No ID No Entry",
+    "Ihi - 5, Tae - 10",
+];
+let num = 0;
+
+setInterval(changeQuote, 5000);
+
+function changeQuote() {
+    num < 9 ? num++ : (num = 0);
+    quotesEl.innerText = quotesArray[num];
+}

@@ -2,6 +2,8 @@
 const input = document.querySelector(".intro-text-input");
 const introPageEl = document.querySelector(".intro-page");
 const introOverlayEl = document.querySelector(".intro-overlay");
+const heroPageEl = document.querySelector(".hero-page");
+const backgroundImageEl = document.querySelector(".background-image");
 let username = "";
 
 function welcomeGreeting() {
@@ -20,7 +22,9 @@ input.addEventListener("keyup", (e) => {
 // CLOCK START
 
 // clock elements
+const arrowRotate = document.querySelector(".custom-arrow-rotate");
 const clockEl = document.querySelector(".clock");
+const secondsEl = document.querySelector(".seconds");
 const meridiemEl = document.querySelector(".meridiem");
 const heroGreetingEl = document.querySelector(".hero-greeting");
 
@@ -28,6 +32,7 @@ let swapTimer = true;
 
 function clockFormat() {
     swapTimer ? (swapTimer = false) : (swapTimer = true);
+    arrowRotate.classList.toggle("text-muted");
 }
 
 function currentTime() {
@@ -40,6 +45,7 @@ function currentTime() {
     min = updateTime(min);
     sec = updateTime(sec);
 
+    secondsEl.innerText = sec;
     meridiemEl.innerText = `${hour >= 12 ? "PM" : "AM"}`;
     heroGreetingEl.innerText = `${
         hour > 18 ? "Good Night 🌜" : "Good Day 🌞"
@@ -51,7 +57,7 @@ function currentTime() {
         }
     }
 
-    clockEl.innerText = `${hour}:${min}:${sec}`;
+    clockEl.innerText = `${hour}:${min}`;
 
     var timer = setTimeout(() => {
         currentTime();
@@ -68,8 +74,8 @@ function updateTime(k) {
 
 currentTime();
 // DARK MODE START
-// QUOTES START
 
+// QUOTES START
 const quotesEl = document.querySelector(".hero-quotes");
 
 const quotesArray = [
@@ -84,11 +90,16 @@ const quotesArray = [
     "No ID No Entry",
     "Ihi - 5, Tae - 10",
 ];
+
 let num = 0;
 
 setInterval(changeQuote, 5000);
 
 function changeQuote() {
     num < 9 ? num++ : (num = 0);
-    quotesEl.innerText = quotesArray[num];
+    // introPageEl.style.backgroundImage = `url("bg-${num}.jpg")`;
+    // introOverlayEl.style.backgroundImage = `url("bg-${num}.jpg")`;
+    // heroPageEl.style.backgroundImage = `url("bg-${num}.jpg")`;
+    backgroundImageEl.src = `bg-${num}.jpg`;
+    quotesEl.innerText = `"${quotesArray[num]}"`;
 }

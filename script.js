@@ -6,8 +6,18 @@ const heroPageEl = document.querySelector(".hero-page");
 const backgroundImageEl = document.querySelector(".background-image");
 let username = "";
 
+function enterHeroPage() {
+    heroPageEl.classList.remove("hidden");
+}
+
+function enterOverlay() {
+    introOverlayEl.classList.add("invisible");
+    setTimeout(enterHeroPage, 500);
+}
+
 function welcomeGreeting() {
-    introOverlayEl.classList.add("hidden");
+    introOverlayEl.classList.remove("hidden");
+    setTimeout(enterOverlay, 2000);
 }
 
 input.addEventListener("keyup", (e) => {
@@ -15,7 +25,7 @@ input.addEventListener("keyup", (e) => {
         username = e.target.value;
         introPageEl.classList.add("hidden");
 
-        setTimeout(welcomeGreeting, 3000);
+        setTimeout(welcomeGreeting, 500);
     }
 });
 
@@ -100,6 +110,6 @@ function changeQuote() {
     // introPageEl.style.backgroundImage = `url("bg-${num}.jpg")`;
     // introOverlayEl.style.backgroundImage = `url("bg-${num}.jpg")`;
     // heroPageEl.style.backgroundImage = `url("bg-${num}.jpg")`;
-    backgroundImageEl.src = `bg-${num}.jpg`;
+    backgroundImageEl.src = `img/bg-${num}.jpg`;
     quotesEl.innerText = `"${quotesArray[num]}"`;
 }

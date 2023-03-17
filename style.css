@@ -2,7 +2,8 @@
     border: 0.2px dashed black;
 } */
 /* hidden */
-.hidden {
+.hidden,
+.invisible {
     display: none;
 }
 .background-image {
@@ -18,7 +19,8 @@
 }
 .intro-page,
 .intro-overlay,
-.hero-page {
+.hero-page,
+.background-page {
     width: 100vw;
     height: 100vh;
 
@@ -26,7 +28,7 @@
     top: 0;
     left: 0;
 
-    background-color: white;
+    /* background-color: white; */
 }
 .intro-page {
     z-index: 3;
@@ -133,7 +135,7 @@
 }
 
 input:checked + .slider {
-    background-color: green;
+    background-color: rgba(0, 128, 0, 0.436);
 }
 input:checked + .slider::before {
     -webkit-transform: translateX(26px);

@@ -1,6 +1,11 @@
 /* * {
     border: 0.2px dashed black;
 } */
+
+:root {
+    --primary: black;
+    --secondary: white;
+}
 /* hidden */
 .hidden,
 .invisible {
@@ -16,6 +21,7 @@
 /* intro section */
 .main {
     position: relative;
+    color: var(--primary);
 }
 .intro-page,
 .intro-overlay,
@@ -57,8 +63,10 @@
 .intro-text-input,
 .hero-text-input {
     border: none;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid var(--primary);
     background-color: transparent;
+    color: var(--primary);
+    text-align: center;
 }
 
 /* hero section */
@@ -87,7 +95,8 @@
     font-size: 150px;
     font-weight: 200;
     line-height: 0.8;
-    color: rgba(0, 0, 0, 0.738);
+    color: var(--primary);
+    opacity: 70%;
 }
 .seconds {
     font-size: 50px;
@@ -99,61 +108,42 @@
     font-size: 30px;
     font-weight: 200;
     background-color: rgba(0, 0, 0, 0.581);
-    color: white;
+    color: var(--secondary);
 }
 
-/* toggle button */
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-}
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background-color: #ccc;
-}
-.slider::before {
-    position: absolute;
-    left: 4px;
-    bottom: 4px;
-    content: "";
-    width: 26px;
-    height: 26px;
-    background-color: white;
-    transition: 0.4s;
-}
-
-input:checked + .slider {
-    background-color: rgba(0, 128, 0, 0.436);
-}
-input:checked + .slider::before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-}
-.slider.round {
-    border-radius: 34px;
-}
-.slider.round:before {
-    border-radius: 50%;
-}
 /* arrow-rotate */
-.rotate-link {
+.rotate-link,
+.circle-link {
     width: 60px;
 }
-.custom-arrow-rotate {
+.custom-arrow-rotate,
+.custom-circle {
     font-size: 34px;
+    color: var(--primary);
+}
+.circle-link {
+    position: relative;
+}
+.custom-arrow-left {
+    position: absolute;
+    left: 70px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--primary);
+
+    animation: frontBack 1s infinite;
+}
+
+@keyframes frontBack {
+    0% {
+        left: 70px;
+    }
+    50% {
+        left: 60px;
+    }
+    100% {
+        left: 70px;
+    }
 }
 
 @media only screen and (max-width: 769px) {

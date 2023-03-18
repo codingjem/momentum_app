@@ -84,6 +84,26 @@ function updateTime(k) {
 
 currentTime();
 // DARK MODE START
+let dark = true;
+const rootColors = document.querySelector(":root");
+const arrowLeftEl = document.querySelector(".custom-arrow-left");
+const circleEl = document.querySelector(".circle-link");
+
+function darkMode() {
+    arrowLeftEl.classList.add("hidden");
+    circleEl.classList.toggle("switch");
+    if (dark) {
+        rootColors.style.setProperty("--primary", "white");
+        rootColors.style.setProperty("--secondary", "black");
+        meridiemEl.style.backgroundColor = "rgba(255, 255, 255, 0.581)";
+        dark = false;
+    } else {
+        rootColors.style.setProperty("--primary", "black");
+        rootColors.style.setProperty("--secondary", "white");
+        meridiemEl.style.backgroundColor = "rgba(0, 0, 0, 0.581)";
+        dark = true;
+    }
+}
 
 // QUOTES START
 const quotesEl = document.querySelector(".hero-quotes");
@@ -105,11 +125,13 @@ let num = 0;
 
 setInterval(changeQuote, 5000);
 
+let mode = true;
+
 function changeQuote() {
     num < 9 ? num++ : (num = 0);
-    // introPageEl.style.backgroundImage = `url("bg-${num}.jpg")`;
-    // introOverlayEl.style.backgroundImage = `url("bg-${num}.jpg")`;
-    // heroPageEl.style.backgroundImage = `url("bg-${num}.jpg")`;
-    backgroundImageEl.src = `img/bg-${num}.jpg`;
+    circleEl.classList.contains("switch")
+        ? (backgroundImageEl.src = `img-dark/bg-${num}.jpg`)
+        : (backgroundImageEl.src = `img/bg-${num}.jpg`);
+
     quotesEl.innerText = `"${quotesArray[num]}"`;
 }

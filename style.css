@@ -20,13 +20,18 @@
 }
 /* intro section */
 .main {
+    width: 100vw;
+    height: 100vh;
     position: relative;
     color: var(--primary);
+    overflow: hidden;
 }
 .intro-page,
 .intro-overlay,
 .hero-page,
-.background-page {
+.background-page,
+.to-do-list,
+.to-do-overlay {
     width: 100vw;
     height: 100vh;
 
@@ -37,11 +42,19 @@
     /* background-color: white; */
 }
 .intro-page {
-    z-index: 3;
+    z-index: 5;
 }
 
 .intro-overlay {
+    z-index: 4;
+}
+.to-do-list {
+    z-index: 3;
+}
+.to-do-overlay {
     z-index: 2;
+    background-color: var(--primary);
+    opacity: 30%;
 }
 .hero-page {
     z-index: 1;
@@ -132,6 +145,57 @@
     color: var(--primary);
 
     animation: frontBack 1s infinite;
+}
+
+/* to-do-list start */
+.to-do-parent {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+.to-do-child {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 400px;
+    min-height: 200px;
+    background-color: var(--primary);
+}
+.to-do-clip {
+    position: absolute;
+    top: 75%;
+    right: -39px;
+    transform: rotate(-90deg);
+}
+.to-do-btn {
+    background-color: var(--primary);
+    opacity: 60%;
+    color: var(--secondary);
+
+    border-radius: 0;
+}
+.input-field-style {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid var(--secondary);
+    color: var(--secondary);
+}
+.paragraph-styling {
+    line-height: 0.4;
+    margin-top: 20px;
+
+    font-size: 24px;
+    color: var(--secondary);
+}
+
+.fa-x,
+.to-do-label {
+    color: var(--secondary);
+    background-color: transparent;
+    border: none;
 }
 
 @keyframes frontBack {

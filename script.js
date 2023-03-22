@@ -135,3 +135,35 @@ function changeQuote() {
 
     quotesEl.innerText = `"${quotesArray[num]}"`;
 }
+// TO DO LIST START
+const toDoListEl = document.querySelector(".to-do-list");
+const toDoOverlayEl = document.querySelector(".to-do-overlay");
+const inputFieldEl = document.querySelector("#input-field");
+const toDoContainerEl = document.querySelector("#to-do-container");
+
+inputFieldEl.addEventListener("keyup", (e) => {
+    if (e.keyCode === 13) {
+        var paragraph = document.createElement("p");
+        paragraph.classList.add("paragraph-styling");
+        paragraph.innerText = inputFieldEl.value;
+        toDoContainerEl.appendChild(paragraph);
+
+        inputFieldEl.value = "";
+
+        paragraph.addEventListener("click", () => {
+            paragraph.style.textDecoration = "line-through";
+        });
+        paragraph.addEventListener("dblclick", () => {
+            toDoContainerEl.removeChild(paragraph);
+        });
+    }
+});
+
+function toDoOpen() {
+    toDoListEl.classList.remove("hidden");
+    toDoOverlayEl.classList.remove("hidden");
+}
+function toDoClose() {
+    toDoListEl.classList.add("hidden");
+    toDoOverlayEl.classList.add("hidden");
+}

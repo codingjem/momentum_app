@@ -143,18 +143,44 @@ const toDoContainerEl = document.querySelector("#to-do-container");
 
 inputFieldEl.addEventListener("keyup", (e) => {
     if (e.keyCode === 13) {
-        var paragraph = document.createElement("p");
-        paragraph.classList.add("paragraph-styling");
-        paragraph.innerText = inputFieldEl.value;
-        toDoContainerEl.appendChild(paragraph);
+        var listItem = document.createElement("li");
+        var editInput = document.createElement("input");
+        var deleteButton = document.createElement("button");
+        var xButton = document.createElement("i");
+
+        editInput.type = "text";
+        editInput.value = inputFieldEl.value;
+        editInput.classList.add("input-styling");
+
+        xButton.classList.add("fa-solid");
+        xButton.classList.add("fa-x");
+
+        deleteButton.classList.add("btn");
+
+        listItem.classList.add("list-styling");
+
+        deleteButton.appendChild(xButton);
+
+        listItem.appendChild(editInput);
+        listItem.appendChild(deleteButton);
+
+        toDoContainerEl.appendChild(listItem);
+        // var paragraph = document.createElement("p");
+        // paragraph.classList.add("paragraph-styling");
+        // paragraph.innerText = inputFieldEl.value;
+        // toDoContainerEl.appendChild(paragraph);
 
         inputFieldEl.value = "";
 
-        paragraph.addEventListener("click", () => {
-            paragraph.style.textDecoration = "line-through";
-        });
-        paragraph.addEventListener("dblclick", () => {
-            toDoContainerEl.removeChild(paragraph);
+        // paragraph.addEventListener("click", () => {
+        //     paragraph.style.textDecoration = "line-through";
+        // });
+        // paragraph.addEventListener("dblclick", () => {
+        //     toDoContainerEl.removeChild(paragraph);
+        // });
+
+        deleteButton.addEventListener("click", () => {
+            toDoContainerEl.removeChild(listItem);
         });
     }
 });

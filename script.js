@@ -19,10 +19,17 @@ function welcomeGreeting() {
     introOverlayEl.classList.remove("hidden");
     setTimeout(enterOverlay, 2000);
 }
+// local storage
+let storedUsername = "";
+storedUsername = localStorage.getItem("value");
+console.log(storedUsername);
 
 input.addEventListener("keyup", (e) => {
     if (e.keyCode === 13) {
         username = e.target.value;
+        localStorage.setItem("value", username);
+        storedUsername = localStorage.getItem("value");
+        console.log(storedUsername);
         introPageEl.classList.add("hidden");
 
         setTimeout(welcomeGreeting, 500);
@@ -59,7 +66,7 @@ function currentTime() {
     meridiemEl.innerText = `${hour >= 12 ? "PM" : "AM"}`;
     heroGreetingEl.innerText = `${
         hour > 18 ? "Good Night 🌜" : "Good Day 🌞"
-    }, ${username}`;
+    }, ${storedUsername}`;
 
     if (swapTimer) {
         if (hour > 12) {
@@ -109,16 +116,16 @@ function darkMode() {
 const quotesEl = document.querySelector(".hero-quotes");
 
 const quotesArray = [
-    "Time is Gold!",
-    "Bawal umihi dito",
-    "Honesty is the best policy",
-    "Cleanliness is next to Godliness",
-    "No Littering",
-    "Keep Off the Grass",
-    "No Man is an Island",
-    "No jaywalking",
-    "No ID No Entry",
-    "Ihi - 5, Tae - 10",
+    "We need much less than we think we need",
+    "Don't let yesterday take up too much of today",
+    "Whatever you are, be a good one",
+    "Limit your 'always' and your 'nevers'",
+    "Creativity is intelligence having fun",
+    "If you tell the truth you don't have to remember anything",
+    "There is no substitute for hard work",
+    "If you look at what you have in life, you'll always have more",
+    "Never regret anything that made you smile",
+    "Every accomplishment starts with the decision to try",
 ];
 
 let num = 0;
@@ -165,19 +172,8 @@ inputFieldEl.addEventListener("keyup", (e) => {
         listItem.appendChild(deleteButton);
 
         toDoContainerEl.appendChild(listItem);
-        // var paragraph = document.createElement("p");
-        // paragraph.classList.add("paragraph-styling");
-        // paragraph.innerText = inputFieldEl.value;
-        // toDoContainerEl.appendChild(paragraph);
 
         inputFieldEl.value = "";
-
-        // paragraph.addEventListener("click", () => {
-        //     paragraph.style.textDecoration = "line-through";
-        // });
-        // paragraph.addEventListener("dblclick", () => {
-        //     toDoContainerEl.removeChild(paragraph);
-        // });
 
         deleteButton.addEventListener("click", () => {
             toDoContainerEl.removeChild(listItem);
